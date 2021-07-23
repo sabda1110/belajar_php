@@ -1,14 +1,24 @@
 <?php
-//Belajar Function Built-in Function
- $kondisi1=date("d-M-Y",time()+60*60*24*3);
- $kondisi2=date("l",mktime(0,0,0,11,1,2000));
- $kondisi3=date("l",strtotime("12 october 2000"));
-
-
- echo $kondisi1."<br>";
- echo $kondisi2."<br>";
- echo $kondisi3;
-
-
+function tgl_lahir($nama="admin",$lahir){
+    echo "Selamat Datang $nama <br>";
+    echo "NAMA :".$nama."<br>";
+    echo "TGL  :".$lahir."<br>";
+    echo "Hari :".date("l",strtotime($lahir));
+}
 
 ?>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar User Defined Function</title>
+</head>
+<body>
+    <?php tgl_lahir("Sabda","12 octo 2000");  ?>
+</body>
+</html>
