@@ -1,30 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pertemuan 5 PHP Control Flow</title>
-    <style>
-        .warna{
-            background-color:red;
-             }
-    </style>
-</head>
-<body>
-    <table border="1" cellpadding="20" cellspacing="0">
-     <?php for($i=1;$i<6;$i++): ?>
-       <?php if($i%2==0):?>
-           <tr class="warna"> 
-        <?php else: ?>
-            <tr>
-        <?php endif; ?>         
-        <?php for($j=1;$j<=5;$j++) : ?>
-        <td><?= $i.",".$j; ?></td>
-         <?php endfor; ?>  
-      </tr>     
-      <?php endfor; ?>
+<?php
+//Belajar Function Built-in Function
+ $kondisi1=date("d-M-Y",time()+60*60*24*3);
+ $kondisi2=date("l",mktime(0,0,0,11,1,2000));
+ $kondisi3=date("l",strtotime("12 october 2000"));
 
-    </table>
-</body>
-</html>
+
+ echo $kondisi1."<br>";
+ echo $kondisi2."<br>";
+ echo $kondisi3;
+
+
+
+?>
