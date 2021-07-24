@@ -1,6 +1,13 @@
 <?php
-$arr1=[1,3,5,4,2,1,1];
+$mahasiswa = [
+               ["193510101","Sabda Setiawan","4B","3.8"],
+               ["193510102","Budi Ariandi","4A","3.9"],
+               ["193510103","Sardi Ariandi","4C","3.2"]
+
+];
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,34 +15,19 @@ $arr1=[1,3,5,4,2,1,1];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Belajar Array</title>
-    <style>
-
-        .contai{
-            display:flex;
-            width: 750px;
-            flex-wrap:wrap;
-        }
-        .kotak{
-            width: 100px;
-            height: 100px;
-            background-color:red;
-            margin:3px;
-            text-align:center;
-            line-height:100px;  
-        }
-    </style>
+    <title>Document</title>
 </head>
 <body>
-    <div class="contai">
-    <?php for($i=0;$i<count($arr1);$i++) : ?>
-        <div class="kotak"><?= $arr1[$i];  ?></div>
-    <?php endfor ?>
-
-    <?php foreach($arr1 as $a) : ?>
-     <div class="kotak"><?= $a ?></div>
-     <?php endforeach ?>   
-    </div>
+    <h1>Data Mahasiswa</h1>
+    
+        <?php foreach($mahasiswa as $a) : ?>
+         <ul>
+         <li>NPM   :<?=$a[0];?></li>
+         <li>NAMA  :<?=$a[1];?></li>
+         <li>KELAS :<?=$a[2];?></li>
+         <li>IPK   :<?=$a[3];?></li>
+         </ul>
+        <?php endforeach ?>    
+    
 </body>
 </html>
-
