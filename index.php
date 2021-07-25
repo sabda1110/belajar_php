@@ -1,14 +1,3 @@
-<?php
-$mahasiswa = [
-               ["193510101","Sabda Setiawan","4B","3.8"],
-               ["193510102","Budi Ariandi","4A","3.9"],
-               ["193510103","Sardi Ariandi","4C","3.2"]
-
-];
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,18 +5,28 @@ $mahasiswa = [
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Data Mahasiswa</h1>
+    <?php  
+      $arr=
+      [
+        ["nama"=>"beras","stok"=>"12","harga"=>"5000","gambar"=>"jaw tum.jpg"],
+        ["nama"=>"gula","stok"=>"4","harga"=>"6000","gambar"=>"jaw tum.jpg"]
+      ];
+    ?>
+<div class="container">
+   <h1>Kedai Harian Sabda</h1> 
     
-        <?php foreach($mahasiswa as $a) : ?>
-         <ul>
-         <li>NPM   :<?=$a[0];?></li>
-         <li>NAMA  :<?=$a[1];?></li>
-         <li>KELAS :<?=$a[2];?></li>
-         <li>IPK   :<?=$a[3];?></li>
-         </ul>
-        <?php endforeach ?>    
-    
+  <?php foreach($arr as $a) : ?>
+    <ul>
+      <li><img src="gambar/<?= $a["gambar"];?>" alt=""></li>
+      <li>Barang :<?= $a["nama"];?></li>
+      <li>Stok   :<?= $a["stok"];?></li>
+      <li>Harga  :<?= $a["harga"];?></li>
+    </ul>
+  <?php endforeach;   ?>
+  
+</div>
 </body>
 </html>
