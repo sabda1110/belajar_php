@@ -7,11 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <ul>
-        <li><img src="gambar/<?=$_GET["gambar"]?>"></li>
-        <li>Barang : <?=$_GET["nama"];?></li>
-        <li>Stok   : <?=$_GET["stok"];?></li>
-        <li>Harga  : <?=$_GET["harga"];?></li>
-    </ul>
+  <h1>Selamat Datang Admin</h1>
 </body>
 </html>
