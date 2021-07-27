@@ -7,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-  <h1>Selamat Datang Admin</h1>
+  <?= $_GET["npm"];?>
 </body>
 </html>
