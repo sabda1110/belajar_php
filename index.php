@@ -28,7 +28,7 @@ $mahasiswa = perintah("SELECT * FROM mahasiswa");
            <td><?=$data["kelas"]; ?></td>
            <td><?=$data["email"]; ?></td>
            <td>
-             <a href="">UPDATE</a>
+             <a href="update.php?npm=<?=$data["npm"];?>">UPDATE</a>
              <a href="hapus.php?npm=<?= $data["npm"];?>"onclick="return confirm('Yakin ?')">DELETE</a>
            </td>
            </tr>

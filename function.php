@@ -29,8 +29,25 @@ function tambah($data){
 
 function hapus($data){
     global $koneksi;
-    mysqli_query($koneksi,"DELETE FROM mahasiswa WHERE npm='$data'");
+    mysqli_query($koneksi,"DELETE FROM mahasiswa WHERE npm=$data");
     return mysqli_affected_rows($koneksi);
+}
+
+function update($data){
+    global $koneksi;
+    $npm=htmlspecialchars($data["npm"]);
+    $nama=htmlspecialchars($data["nama"]);
+    $kelas=htmlspecialchars($data["kelas"]);
+    $email=htmlspecialchars($data["email"]);
+     
+    $query="UPDATE mahasiswa SET 
+            nama='$nama',
+            kelas='$kelas',
+            email='$email' WHERE npm=$npm";
+    mysqli_query($koneksi,$query);
+    
+    return mysqli_affected_rows($koneksi);
+      
 }
 
 

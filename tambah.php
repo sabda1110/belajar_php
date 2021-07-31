@@ -47,7 +47,7 @@ if(isset($_POST["submit"])){
                 <td><input type="text" name="email" id="email"></td>
             </tr>
             <tr>
-                <td><button type="submit" name="submit">TAMBAH</button></td>
+                <td><button type="submit" name="submit">UPDATE</button></td>
             </tr>
             
         </table>
