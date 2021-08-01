@@ -50,5 +50,11 @@ function update($data){
       
 }
 
+function cari($keywoard){
+    $query="SELECT * FROM mahasiswa WHERE npm='$keywoard'";
+
+    return perintah($query);
+}
+
 
 ?>
