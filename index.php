@@ -29,6 +29,7 @@ if(isset($_POST["cari"])){
      <th>NAMA</th>
      <th>KElAS</th>
      <th>EMAIL</th>
+     <th>GAMBAR</th>
      <th>AKSI</th>
    </tr>
           <?php foreach($mahasiswa as $data) :?>
@@ -37,6 +38,7 @@ if(isset($_POST["cari"])){
            <td><?=$data["nama"]; ?></td>
            <td><?=$data["kelas"]; ?></td>
            <td><?=$data["email"]; ?></td>
+           <td><img src="gambar/<?=$data["gambar"];?>" alt=""></td>
            <td>
              <a href="update.php?npm=<?=$data["npm"];?>">UPDATE</a>
              <a href="hapus.php?npm=<?= $data["npm"];?>"onclick="return confirm('Yakin ?')">DELETE</a>
