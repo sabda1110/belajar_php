@@ -105,4 +105,36 @@ function cari($keywoard){
 }
 
 
+function register($data){
+    global $koneksi;
+    $username=strtolower(stripslashes($data["username"]));
+    $password=mysqli_real_escape_string($koneksi,$data["password"]);
+    $password2=mysqli_real_escape_string($koneksi,$data["password2"]);
+    
+    
+    //Mengagalkan Username Yang sama
+    $result=mysqli_query($koneksi,"SELECT username FROM user WHERE username='$username'");
+    if(mysqli_fetch_assoc($result)){
+        echo "<script>
+               alert('Data Username Sudah Terdaftar');
+              </script>";
+        return false;
+    }
+    //Pengecekan Password dan confirmapassword
+    if($password !== $password2){
+        echo "<script>
+               alert('Password tidak cocok');
+              </script>";
+        return false;
+    }
+    //encript Password
+    $password=password_hash($password,PASSWORD_DEFAULT);
+
+    mysqli_query($koneksi,"INSERT INTO user VALUES('','$username','$password')");
+
+    return mysqli_affected_rows($koneksi);
+}
+
+
+
 ?>
