@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(isset($_SESSION["login"])){
+    header("Location:index.php");
+    exit;
+}
 require 'function.php';
 
 if(isset($_POST["login"])){
@@ -9,6 +14,7 @@ if(isset($_POST["login"])){
     if(mysqli_num_rows($result)===1){
         $row=mysqli_fetch_assoc($result);
         if(password_verify($password,$row["password"])){
+            $_SESSION["login"]=true;
             header("Location: index.php");
             exit;
         }

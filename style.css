@@ -3,3 +3,18 @@
     height: 100px;
     background-size: cover;
 }
+
+
+.logout{
+    display: inline-block;
+    border:2px solid black;
+    width: 70px;
+    height: 20px;
+    padding: 5px;
+    text-decoration: none;
+    color: darkgrey;
+    margin-top: 10px;
+    line-height: 20px;
+    text-align: center;
+    margin-bottom: -100px;
+}

@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+if(!isset($_SESSION["login"])){
+  header("Location:login.php");
+  exit;
+}
+
 require 'function.php';
 $mahasiswa = perintah("SELECT * FROM mahasiswa");
 
@@ -14,9 +21,11 @@ if(isset($_POST["cari"])){
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <title>belajar Menampilkan</title>
 </head>
 <body>
+ <a href="logout.php" class="logout">LOGOUT</a> 
   <h1 style="text-align: center;">Data Mahasiswa</h1>
 <form action="" method="post">
         <input type="text" name="data" autofocus autocomplete placeholder="Masukan NPM"> 
