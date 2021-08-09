@@ -1,10 +1,28 @@
 <?php
+require 'function.php';
 session_start();
+
+if(isset($_COOKIE["id"]) && isset($_COOKIE['key'])){
+    $id=$_COOKIE["id"];
+    $key=$_COOKIE["key"];
+    
+    $result=mysqli_query($koneksi,"SELECT username FROM user WHERE id=$id");
+
+    $row =mysqli_fetch_assoc($result);
+    if($key === hash('sha256',$row["username"])){
+        $_SESSION["login"]= true;
+    }
+
+
+
+}
+
+
 if(isset($_SESSION["login"])){
     header("Location:index.php");
     exit;
 }
-require 'function.php';
+
 
 if(isset($_POST["login"])){
     $username=$_POST["username"];
@@ -15,6 +33,12 @@ if(isset($_POST["login"])){
         $row=mysqli_fetch_assoc($result);
         if(password_verify($password,$row["password"])){
             $_SESSION["login"]=true;
+
+            //Pengecekan remeber
+            if(isset($_POST["remember"])){
+                setcookie("id",$row["id"],time()+3600);
+                setcookie("key",hash('sha256',$row["username"]),time()+3600);
+            }
             header("Location: index.php");
             exit;
         }
@@ -49,6 +73,10 @@ if(isset($_POST["login"])){
             <tr>
                 <td><label for="password">Password</label></td>
                 <td><input type="password" name="password" id="password"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="remember" id="remember"></td>
+                <td><label for="remember">Remember Me</label></td>
             </tr>
             <tr>
                 <td><button type="submit" name="login">Login</button></td>
