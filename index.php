@@ -7,7 +7,19 @@ if(!isset($_SESSION["login"])){
 }
 
 require 'function.php';
-$mahasiswa = perintah("SELECT * FROM mahasiswa");
+$jumlahdataperhalam=3;
+$jumlahdata = count(perintah("SELECT * FROM mahasiswa"));
+$jumlahhalaman = ceil($jumlahdata/$jumlahdataperhalam);
+if(isset($_GET["page"])){
+  $halamanaktif=$_GET["page"];
+}else{
+  $halamanaktif=1;
+}
+
+$nilaiawal = ($jumlahdataperhalam*$halamanaktif) - $jumlahdataperhalam;
+
+
+$mahasiswa = perintah("SELECT * FROM mahasiswa LIMIT $nilaiawal,$jumlahdataperhalam");
 
 if(isset($_POST["cari"])){
   $mahasiswa = cari($_POST["data"]);
@@ -47,14 +59,27 @@ if(isset($_POST["cari"])){
            <td><?=$data["nama"]; ?></td>
            <td><?=$data["kelas"]; ?></td>
            <td><?=$data["email"]; ?></td>
-           <td><img src="gambar/<?=$data["gambar"];?>" alt=""></td>
+           <td><img src="gambar/<?=$data["gambar"];?>" alt="" class="gambar"></td>
            <td>
              <a href="update.php?npm=<?=$data["npm"];?>">UPDATE</a>
              <a href="hapus.php?npm=<?= $data["npm"];?>"onclick="return confirm('Yakin ?')">DELETE</a>
            </td>
            </tr>
-    <?php endforeach; ?>
-   
+    <?php endforeach; ?>   
  </table> 
+
+ <?php if($halamanaktif>1) : ?>
+  <a href="index.php?page=<?=$halamanaktif-1?>">&laquo</a>
+ <?php endif ?> 
+ <?php for($i=1;$i<=$jumlahhalaman;$i++) : ?>
+  <?php if($i==$halamanaktif) : ?>
+    <a href="index.php?page=<?=$i?>" style="color:red"><?=$i?></a> 
+  <?php else : ?>
+    <a href="index.php?page=<?=$i?>"><?=$i?></a> 
+  <?php endif ?>  
+ <?php endfor ?>
+ <?php if($halamanaktif<$jumlahhalaman) : ?>
+  <a href="index.php?page=<?=$halamanaktif+1?>">&raquo</a>
+ <?php endif ?> 
 </body>
 </html>
